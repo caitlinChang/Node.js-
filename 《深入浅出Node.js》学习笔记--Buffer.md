@@ -27,7 +27,8 @@
 
 - **分配小对象（<8KB）**
 `SlowBuffer`对象是在 **C++** 层面上，创建一个新的`slab`单元时，处于分配状态的slab单元指向一个中间变量`pool`。在通过`new Buffer()`创建`Buffer`对象时，会检查`pool`对象是否存在，如果不存在则建立一个新的`slab`对象指向它，同时当前`Buffer`对象的**parent**属性指向该`slab`，并更新`slab`状态。
- ![Alt text](./allocBuffer_image.png)
+
+ ![Alt text](./images/allocBuffer_image.png)
 
 再次创建`Buffer`对象时，会先判断这个`slab`单元是否有足够空间，如果不够久创建并使用新的`slab`单元，上一个`slab`单元的剩余空间会浪费掉。
 > **注：一个`slab`单元只有当其中所有的`Buffer`对象的作用域释放并都可以回收时，该单元的8KB空间才可以被回收**。

@@ -53,7 +53,8 @@ Node利用单线程，避免多线程会出现的死锁、状态同步等问题�
 I/O观察者调用回调函数的行为就是取出请求对象的`result`属性作为参数，取出`oncomplete_sym`属性作为方法，然后调用执行，以此达到调用JavaScirpt传入的回调函数的目的。
 
 至此，整个异步I/O的流程完全结束。
-![09db2e625af646948eebfac70036d220](《深入浅出Node.js》学习笔记--异步I_O.resources/7DF9616C-33C7-4545-B45A-C9A4570A60D6.png)
+
+![Alt text](./images/asyncIO.png)
 
 ### 非I/O的异步API
 
